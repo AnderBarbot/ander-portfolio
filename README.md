@@ -20,6 +20,8 @@ deployment
 
 
 ## TODO
+navbar dropdowns -(Business (portfolio (project1, project2, etc), certs), Computer Science (portfolio (project1, project2, etc), certs))
+
 upper navbar, theme switcher, settings, etc
 layout meta data
 create the other pages.

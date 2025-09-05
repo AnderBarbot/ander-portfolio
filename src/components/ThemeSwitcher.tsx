@@ -1,34 +1,38 @@
 'use client';
+
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-export default function ThemeSwitcher() {
+const lightThemes = [
+  'light', 'cupcake', 'bumblebee', 'emerald', 'corporate',
+  'retro', 'cyberpunk', 'valentine', 'garden', 'lofi', 
+  'pastel', 'fantasy', 'wireframe', 'cmyk', 'autumn', 'acid', 
+  'lemonade', 'winter','nord', 'caramellatte', 'silk'
+];
+
+const darkThemes = [
+  'dark', 'forest',  'black', 'luxury', 'dracula',
+  'halloween',  'business', 'night', 'coffee', 
+  'dim', 'sunset', 'abyss', 'aqua', 'synthwave',
+];
+
+const defaultLight = 'light';
+const defaultDark = 'dark';
+
+export default function ThemeSwitcherDropdown() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Avoid hydration mismatch
   useEffect(() => setMounted(true), []);
-
-  const themes = [
-    'light', 'dark', 'cupcake', 'bumblebee', 'emerald', 'corporate',
-    'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween',
-    'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy',
-    'wireframe', 'black', 'luxury', 'dracula', 'cmyk', 'autumn',
-    'business', 'acid', 'lemonade', 'night', 'coffee', 'winter',
-    'dim', 'nord', 'sunset', 'caramellatte', 'abyss', 'silk',
-  ];
-
-  /* const themes = [
-    'light', 'dark', 'cupcake', 'bumblebee', 'emerald', 
-    'corporate', 'synthwave', 'retro', 'valentine', 'halloween', 
-    'forest', 'fantasy', 'luxury', 'dracula', 'autumn', 'lemonade', 
-    'night', 'winter', 'dim', 'sunset', 'caramellatte', 'abyss',
-  ]; */
-
   if (!mounted) return null;
 
+  const isDark = darkThemes.includes(theme ?? '');
+  const currentThemes = isDark ? darkThemes : lightThemes;
+  const oppositeDefault = isDark ? defaultLight : defaultDark;
+  const oppositeLabel = isDark ? 'Light' : 'Dark';
+
   return (
-    <div className="dropdown dropdown-end block">
+    <div className="dropdown dropdown-end">
       {/* Trigger button */}
       <div
         tabIndex={0}
@@ -64,33 +68,37 @@ export default function ThemeSwitcher() {
         </svg>
       </div>
 
-      {/* Dropdown theme list */}
+      {/* Dropdown content */}
       <div
         tabIndex={0}
-        className="dropdown-content bg-base-200 text-base-content rounded-box top-px h-[30.5rem] max-h-[calc(100vh-8.6rem)] overflow-y-auto overflow-x-hidden border border-white/5 shadow-2xl outline-1 outline-black/5 mt-11"
+        className="dropdown-content z-[1] mt-2 w-50 bg-base-200 border border-base-content shadow-lg p-2 rounded-box"
       >
-        <ul className="menu w-56">
-          <li className="menu-title text-xs">Theme</li>
-          {themes.map((t) => (
-            <li key={t}>
-              <button className="gap-3 px-2" onClick={() => setTheme(t)}>
-                <div className="w-32 truncate capitalize">{t}</div>
+        <div className="space-y-2">
+          {/* Switch category button */}
+          <button
+            onClick={() => setTheme(oppositeDefault)}
+            className="btn btn-sm w-full btn-outline"
+          >
+            Switch to {oppositeLabel} Theme
+          </button>
 
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className={`h-3 w-3 shrink-0 transition-opacity duration-200 ${theme === t ? "visible" : "invisible"
-                    }`}
-                >
-                  <path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z" />
-                </svg>
-              </button>
-            </li>
-          ))}
-        </ul>
+          {/* List of themes in current category */}
+          <div className="grid grid-cols-2 gap-2 max-h-[calc(100vh-10rem)] overflow-y-auto p-1">
+            {currentThemes.map((t) => (
+              <div
+                key={t}
+                data-theme={t}
+                onClick={() => setTheme(t)}
+                className={`cursor-pointer rounded border text-xs text-center capitalize p-1 transition-all duration-200 ${
+                  theme === t ? 'ring-3 ring-primary' : ''
+                }`}
+              >
+                <div className="font-semibold">{t}</div>
+                <div className="mt-1 h-5 rounded bg-base-200"></div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

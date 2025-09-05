@@ -44,7 +44,7 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
-          <Link href="/starterplus" className="font-medium flex items-center gap-4">
+          <Link href="/" className="font-medium flex items-center gap-4">
             <span className="text-nowrap">Ander Barbot</span>
           </Link>
         </div>
