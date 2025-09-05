@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 
 const lightThemes = [
   'light', 'cupcake', 'bumblebee', 'emerald', 'corporate',
-  'retro', 'cyberpunk', 'valentine', 'garden', 'lofi', 
-  'pastel', 'fantasy', 'wireframe', 'cmyk', 'autumn', 'acid', 
-  'lemonade', 'winter','nord', 'caramellatte', 'silk'
+  'retro', 'cyberpunk', 'valentine', 'garden', 'lofi',
+  'pastel', 'fantasy', 'wireframe', 'cmyk', 'autumn', 'acid',
+  'lemonade', 'winter', 'nord', 'caramellatte', 'silk'
 ];
 
 const darkThemes = [
-  'dark', 'forest',  'black', 'luxury', 'dracula',
-  'halloween',  'business', 'night', 'coffee', 
+  'dark', 'forest', 'black', 'luxury', 'dracula',
+  'halloween', 'business', 'night', 'coffee',
   'dim', 'sunset', 'abyss', 'aqua', 'synthwave',
 ];
 
@@ -87,14 +87,14 @@ export default function ThemeSwitcherDropdown() {
             {currentThemes.map((t) => (
               <div
                 key={t}
-                data-theme={t}
                 onClick={() => setTheme(t)}
-                className={`cursor-pointer rounded border text-xs text-center capitalize p-1 transition-all duration-200 ${
-                  theme === t ? 'ring-3 ring-primary' : ''
-                }`}
+                className={`cursor-pointer rounded-box border text-xs text-center capitalize p-1 transition-all duration-200 ${theme === t ? 'ring-3 ring-primary' : ''
+                  }`}
               >
-                <div className="font-semibold">{t}</div>
-                <div className="mt-1 h-5 rounded bg-base-200"></div>
+                <div data-theme={t} className="rounded-box">
+                  <div className="font-semibold">{t}</div>
+                  <div className="mt-1 h-5 rounded bg-base-200"></div>
+                </div>
               </div>
             ))}
           </div>

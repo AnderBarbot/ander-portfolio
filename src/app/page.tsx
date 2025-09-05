@@ -21,15 +21,12 @@ export default function Home() {
         </p>
         <div className="divider my-6"></div>
         <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/about" className="btn btn-primary btn-sm">
-            About Me
-          </Link>
-          <Link href="/portfolio" className="btn btn-secondary btn-sm">
+          <Link href="/business" className="btn btn-primary btn-sm">
             View Portfolio
           </Link>
           <a
             href="/resume.pdf"
-            className="btn btn-outline btn-sm"
+            className="btn btn-S btn-sm"
             target="_blank"
             rel="noopener noreferrer"
             download
