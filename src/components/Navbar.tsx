@@ -45,7 +45,7 @@ export default function Navbar() {
             </ul>
           </div>
           <Link href="/starterplus" className="font-medium flex items-center gap-4">
-            <span className="text-nowrap">Starter Plus</span>
+            <span className="text-nowrap">Ander Barbot</span>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">

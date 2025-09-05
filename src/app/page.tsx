@@ -8,7 +8,7 @@ export default function Home() {
       <div className="bg-base-200 p-8 rounded-xl shadow-lg border border-base-content/10 max-w-xl w-full text-center">
         <div className="flex justify-center mb-4">
           <Image
-            src="/profile.jpg"
+            src="/profile1.jpg"
             width={120}
             height={120}
             alt="Ander Barbot"
@@ -37,11 +37,6 @@ export default function Home() {
             Download Resume
           </a>
         </div>
-      </div>
-      <div className="text-center text-sm opacity-60">
-        <p>Email: <a href="mailto:anderbarbot@gmail.com" className="link">anderbarbot@gmail.com</a></p>
-        <p>Phone: <a href="tel:2082302102" className="link">208-230-2102</a></p>
-        <p>Location: 3102 N Treasure Dr, Boise, ID 83703</p>
       </div>
     </div>
   );
