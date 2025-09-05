@@ -9,10 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "daisyui": "^5.0.50",
+    "daisyui": "^5.1.7",
     "next": "15.4.6",
     "next-themes": "^0.4.6",
-    "postcss": "^8.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0"
   },
@@ -22,9 +21,25 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
-    "tailwindcss": "^4.1.11",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.13",
     "typescript": "^5"
-  }
+  },
+  "description": "```bash\r npm run dev\r #or\r yarn dev\r ```",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnderBarbot/ander-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AnderBarbot/ander-portfolio/issues"
+  },
+  "homepage": "https://github.com/AnderBarbot/ander-portfolio#readme"
 }
