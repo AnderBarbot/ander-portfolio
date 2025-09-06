@@ -31,7 +31,6 @@ export default function RootLayout({
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem={true}>
           <Navbar />
           <main className="min-h-[calc(100vh-120px)] flex flex-col">{children}</main>
-          <Footer />
         </ThemeProvider>
       </body>
     </html>

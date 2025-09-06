@@ -20,14 +20,19 @@ deployment
 
 
 ## TODO
-navbar dropdowns -(Business (portfolio (project1, project2, etc), certs), Computer Science (portfolio (project1, project2, etc), certs))
-create my own theme. 
+theme selector changes- sun/moon inside of list dropdown. color dongles.
 
-upper navbar, theme switcher, settings, etc
-layout meta data
-create the other pages.
-review/update styling
-ensure all functionality is as intended
+draw hero section. 
+make it hide on scroll past the about section, to return on hover.
+
+make section components
+
+
+new theme creation (languages/destination/website callbacks)
+
+
+theme - day/night. create my own. rounded-selector? fab transition. smaller selection (not dropdown, but color palette selectors OR single column, wide, w colored slots). persistent
+guestbook text: People matter. You matter. I appreciate your time and attention. Leave me a note so I can give you some in return. your note affects the default theme 
 
 
 
@@ -41,7 +46,8 @@ DaisyUI - prebuilt components = faster development and more flexibilty.
 
 Development itself
 getting set up and familiar with the framework was a bit of a bear, as expected. Thankfully next provides a basic app template so I jumped right into the getting started docs and played around with the installation versions.
-Eventually I had my own basic website I had scraped together from the documentation started rolling pretty quickly.
+Eventually I had my own basic website I had scraped together from the documentation started rolling pretty quickly. I was working towards a elegant landing page with dynamic features, with further information being found on separate pages. 
+Eventually I had a passble website. I did some more research, found new inspiration and decided to change tacts. I wanted one elegant page, not multiple mediocre ones. 
 
 Roadblocks
 ThemeSwitcher - context switching between the active theme and the previewed theme was tough and I couldn't find documentation about it. I ended up creating a distinction between the clickable and the inner box. Intially it was a sketchy solution, but I fiddled with it until it felt smooth and well polished. 

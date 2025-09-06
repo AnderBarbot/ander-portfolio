@@ -3,38 +3,100 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="w-full flex flex-col gap-10 items-center justify-center m-auto p-5">
-      {/* Hero Section */}
-      <div className="bg-base-200 p-8 rounded-xl shadow-lg border border-base-content/10 max-w-xl w-full text-center">
-        <div className="flex justify-center mb-4">
-          <Image
-            src="/profile1.jpg"
-            width={120}
-            height={120}
-            alt="Ander Barbot"
-            className="rounded-full border border-base-content/20"
-          />
-        </div>
-        <h1 className="text-3xl font-bold">Ander Barbot</h1>
-        <p className="text-sm mt-2 opacity-80">
-          Full-stack developer based in Boise, ID. Passionate about crafting scalable web apps, clean UI, and solving meaningful problems through code.
-        </p>
-        <div className="divider my-6"></div>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link href="/business" className="btn btn-primary btn-sm">
-            View Portfolio
-          </Link>
-          <a
-            href="/AnderBarbotResume.pdf"
-            className="btn btn-secondary btn-sm"
-            target="_blank"
-            rel="noopener noreferrer"
-            download
-          >
-            Download Resume
-          </a>
-        </div>
+    <main className="w-full min-h-screen bg-base-100 text-base-content flex justify-center px-4 py-10 overflow-x-hidden">
+      <div className="w-full max-w-3xl flex flex-col gap-20">
+    
+
+
+        {/* ABOUT SECTION */}
+        <section id="about" className="scroll-mt-20">
+          <div className="prose max-w-none">
+            <h2 className="text-2xl font-bold mb-4">About</h2>
+            <p>
+              bio
+            </p>
+          </div>
+        </section>
+
+
+
+        {/* EXPERIENCE SECTION */}
+        <section id="experience" className="scroll-mt-20">
+          <h2 className="text-2xl font-bold mb-4">Experience</h2>
+          <ul className="timeline timeline-vertical">
+            <li>
+              <div className="timeline-start">2023</div>
+              <div className="timeline-middle">
+                <div className="badge badge-primary"></div>
+              </div>
+              <div className="timeline-end mb-10">
+                <h3 className="font-semibold">Software Engineer @ Company X</h3>
+                <p className="text-sm opacity-70">description</p>
+              </div>
+            </li>
+            <li>
+              <div className="timeline-start">2021</div>
+              <div className="timeline-middle">
+                <div className="badge badge-secondary"></div>
+              </div>
+              <div className="timeline-end mb-10">
+                <h3 className="font-semibold">Dev @ company Y</h3>
+                <p className="text-sm opacity-70">description</p>
+              </div>
+            </li>
+            {/* Add more as needed */}
+          </ul>
+        </section>
+
+
+
+
+        {/* WORK SECTION */}
+        <section id="work" className="scroll-mt-20">
+          <h2 className="text-2xl font-bold mb-4">Selected Work</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* Work Card */}
+            <div className="card bg-base-200 shadow-md">
+              <figure>
+                <Image src="/project1.png" alt="Project 1" width={400} height={250} className="rounded-t-xl object-cover" />
+              </figure>
+              <div className="card-body">
+                <h3 className="card-title">Project One</h3>
+                <p className="text-sm opacity-70">description.</p>
+                <div className="card-actions justify-end mt-2">
+                  <Link href="#" className="btn btn-sm btn-outline">View</Link>
+                </div>
+              </div>
+            </div>
+            {/* Duplicate for more work */}
+          </div>
+        </section>
+
+
+
+        {/* GUESTBOOK SECTION */}
+        <section id="guestbook" className="scroll-mt-20">
+          <h2 className="text-2xl font-bold mb-4">Guestbook</h2>
+          <div className="bg-base-200 p-6 rounded-lg shadow-md space-y-4">
+            <form className="flex flex-col gap-3">
+              <input type="text" placeholder="Your name" className="input input-bordered w-full" />
+              <textarea placeholder="Leave a message..." className="textarea textarea-bordered w-full" rows={3}></textarea>
+              <button type="submit" className="btn btn-primary self-end">Sign</button>
+            </form>
+
+
+            <div className="divider">Messages</div>
+            <div className="space-y-2">
+              <div className="bg-base-100 p-4 rounded-lg border">
+                <p className="text-sm">"super hello! – Jane"</p>
+              </div>
+              <div className="bg-base-100 p-4 rounded-lg border">
+                <p className="text-sm">"hello – Dev123"</p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
