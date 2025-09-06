@@ -20,22 +20,20 @@ deployment
 
 
 ## TODO
-theme selector changes- sun/moon inside of list dropdown. color dongles.
-
-draw hero section. 
-make it hide on scroll past the about section, to return on hover.
-
 make section components
 
+about = hero section. timeline of my life, idk I need more here
 
-new theme creation (languages/destination/website callbacks)
+experience = experience cards (2 cards, side by side, cs/business. each card has objective, education, work experience, and skills/certs.)
 
+work = project image carousel.
 
-theme - day/night. create my own. rounded-selector? fab transition. smaller selection (not dropdown, but color palette selectors OR single column, wide, w colored slots). persistent
+guestbook = guest entry, and guestbook (temp data (includes messages, names, theme (from daisyUi themes) and date. Displayed via stack of lists. each list item is the theme of the person who left it, displays name/signature on the left, followed by the message, and concluded by the date.) I dont know if the temp guest data should be stored in the component or the page or somewhere else. Id prefer it store either in /public or in the guestbook component.
+
+other todo
+theme - create my own
 guestbook text: People matter. You matter. I appreciate your time and attention. Leave me a note so I can give you some in return. your note affects the default theme 
-
-
-
+transitions
 
 ## process
 Framework Decision.
