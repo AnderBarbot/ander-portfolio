@@ -25,8 +25,8 @@ export default function Home() {
             View Portfolio
           </Link>
           <a
-            href="/resume.pdf"
-            className="btn btn-S btn-sm"
+            href="/AnderBarbotResume.pdf"
+            className="btn btn-secondary btn-sm"
             target="_blank"
             rel="noopener noreferrer"
             download

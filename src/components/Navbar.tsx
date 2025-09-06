@@ -17,7 +17,6 @@ export default function Navbar() {
   }, []);
 
   return (
-    <>
       <nav
         className={`navbar transition-colors duration-300 sticky bg-base-100/90 top-0 z-30 w-full [transform:translate3d(0,0,0)] backdrop-blur transition-shadow duration-100 px-4 ${
           isScrolled ? "shadow-xs" : ""
@@ -171,6 +170,5 @@ export default function Navbar() {
         </div> */}
         </div>
       </nav>
-    </>
   );
 }

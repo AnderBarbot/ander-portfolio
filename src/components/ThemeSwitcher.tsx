@@ -34,9 +34,9 @@ export default function ThemeSwitcherDropdown() {
   return (
     <div className="dropdown dropdown-end">
       {/* Trigger button */}
-      <div
+      <button
+        type="button"
         tabIndex={0}
-        role="button"
         className="btn group btn-sm gap-1.5 px-1.5 btn-ghost"
       >
         <svg
@@ -66,7 +66,7 @@ export default function ThemeSwitcherDropdown() {
         >
           <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
         </svg>
-      </div>
+       </button>
 
       {/* Dropdown content */}
       <div
