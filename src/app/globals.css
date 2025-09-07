@@ -4,6 +4,10 @@
   themes: all;
 }
 
+@plugin "daisyui" {
+themes: fantasy --default, forest --prefersdark;
+}
+
 /*Animations*/
 @layer utilities {
   /*only used one so far*/

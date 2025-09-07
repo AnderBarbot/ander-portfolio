@@ -1,6 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
 import ProjectCarousel from "@/components/ProjectCarousel";
+import Guestbook from "@/components/Guestbook";
 
 export default function Home() {
   return (
@@ -77,36 +76,12 @@ export default function Home() {
         </section>
 
 
-
-
         <ProjectCarousel />
 
 
+        <Guestbook/>
 
 
-
-        {/* Guestbook */}
-        <section id="guestbook" className="scroll-mt-20">
-          <h2 className="text-2xl font-bold mb-4">Guestbook</h2>
-          <div className="bg-base-200 p-6 rounded-lg shadow-md space-y-4">
-            <form className="flex flex-col gap-3">
-              <input type="text" placeholder="Your name" className="input input-bordered w-full" />
-              <textarea placeholder="Leave a message..." className="textarea textarea-bordered w-full" rows={3}></textarea>
-              <button type="submit" className="btn btn-primary self-end">Sign</button>
-            </form>
-
-
-            <div className="divider">Messages</div>
-            <div className="space-y-2">
-              <div className="bg-base-100 p-4 rounded-lg border">
-                <p className="text-sm">"super hello! – Jane"</p>
-              </div>
-              <div className="bg-base-100 p-4 rounded-lg border">
-                <p className="text-sm">"hello – Dev123"</p>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </main>
   );
