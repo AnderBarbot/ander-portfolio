@@ -42,12 +42,22 @@ last seen map pin
 
 blue page
 
+Ideas: hover = side highlight for side scroll, bar selector w a box that follows the mouse (when its in the box) and has additional physics (adds entertainment factor, custom scroll bar (transitions, me doing things...?). life timeline is clickable. nav bar. 
+Overall: (make a small, good product. not a big, mediocre one. ) animations?
+
 ## process
-Framework Decision.
+techstack decisions
+
+frontend
 React - it's a standard in the industry and I wanted to deepen my frontend fluency with it. Plus, it has a great ecosystem.
 Next.js - I was drawn to the simplified routing. I was also intrigued by the flexible rendering options and built-in performance optimization.
 Tailwind - better modularity and configurabilty = faster development and easier maintenance. It also streamlined the css and markup context switch. 
 DaisyUI - prebuilt components = faster development and more flexibilty. 
+
+deployment
+Supabase - open source = easy self-hosting transition. postgreSQL+auto generated API's = quicker development. generous free tier.
+Vercel - Next.js support + git integration = minimal, elegant, and efficient deployment
+
 
 Development itself
 getting set up and familiar with the framework was a bit of a bear, as expected. Thankfully next provides a basic app template so I jumped right into the getting started docs and played around with the installation versions.
