@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import HeroDrawer from '@/components/HeroDrawer';
 import Contact from '@/components/Contact';
 
@@ -31,7 +30,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem={true}>
-          <Navbar />
+          <Navbar/>
           <HeroDrawer />
           <Contact/>
           <main className="min-h-[calc(100vh-120px)] flex flex-col">{children}</main>

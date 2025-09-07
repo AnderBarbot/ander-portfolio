@@ -1,6 +1,8 @@
 // no use yet, but hasnt broken anything. 
 import type { Config } from 'tailwindcss';
 
+
+
 const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}',

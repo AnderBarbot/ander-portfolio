@@ -1,25 +1,41 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
 const HeroDrawer = () => {
-  const pathname = usePathname();
-  const [isAbout, setIsAbout] = useState(false);
+  const [isInAboutSection, setIsInAboutSection] = useState(false);
 
   useEffect(() => {
-    setIsAbout(pathname === '/about');
-  }, [pathname]);
+    const aboutSection = document.getElementById('about');
+
+    if (!aboutSection) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInAboutSection(entry.isIntersecting);
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.2, 
+      }
+    );
+
+    observer.observe(aboutSection);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
 
   return (
     <div className="group fixed top-0 left-0 h-screen z-50">
-      {/* Drawer Panel */}
       <div
         className={`
-          h-full w-80 bg-base-200 shadow-lg p-6 transition-transform duration-300 ease-in-out
-          ${isAbout ? 'translate-x-0' : '-translate-x-60 group-hover:translate-x-0'}
+          h-full w-80 bg-base-300 shadow-xl z-100 p-6 transition-transform duration-300 ease-in-out
+          ${isInAboutSection ? 'translate-x-0' : '-translate-x-75 group-hover:translate-x-0'}
         `}
       >
         <div className="flex flex-col items-center text-center">
@@ -43,8 +59,7 @@ const HeroDrawer = () => {
         </div>
       </div>
 
-      {/* Invisible Hover Zone */}
-      {!isAbout && (
+      {!isInAboutSection && (
         <div className="absolute top-0 left-0 h-full w-4 bg-transparent group-hover:bg-transparent" />
       )}
     </div>
