@@ -20,12 +20,12 @@ const Guestbook: React.FC = () => {
   const [message, setMessage] = useState('')
   const [name, setName] = useState('')
   const [entries, setEntries] = useState<Entry[]>([])
-
   const [userId, setUserId] = useState<string | null>(null)
   const [editingId, setEditingId] = useState<string | null>(null)
   const [editMessage, setEditMessage] = useState('')
+  const [editName, setEditName] = useState('')
 
-  // Anonymous auth & get user ID
+  // auth
   useEffect(() => {
     const ensureUser = async () => {
       const { data: sessionData } = await supabase.auth.getSession()
@@ -38,38 +38,32 @@ const Guestbook: React.FC = () => {
     ensureUser()
   }, [])
 
-  // Fetch entries on mount
+  // on mount
   useEffect(() => {
     const fetchEntries = async () => {
       const { data, error } = await supabase
         .from('guestbook')
-        .select('id, message, name, theme, user_id, created')
+        .select('id, message, name, theme, user_id, created, updated')
         .order('created', { ascending: false })
-
       if (error) {
         console.error('Fetch failed:', error)
         return
       }
-
       const mapped: Entry[] = data.map((entry) => ({
         id: entry.id,
         message: entry.message,
         name: entry.name,
         theme: entry.theme || 'forest',
         user_id: entry.user_id,
-        date: entry.created.split('T')[0],
+        date: (entry.updated || entry.created).split('T')[0],
       }))
-
       setEntries(mapped)
     }
-
     fetchEntries()
   }, [])
 
-  // Send new message
   const handleSend = async () => {
     if (!message.trim() || !name.trim()) return
-
     const { data, error } = await supabase
       .from('guestbook')
       .insert([
@@ -82,12 +76,10 @@ const Guestbook: React.FC = () => {
       ])
       .select()
       .single()
-
     if (error) {
       console.error('Insert failed:', error)
       return
     }
-
     setEntries((prev) => [
       {
         id: data.id,
@@ -99,76 +91,101 @@ const Guestbook: React.FC = () => {
       },
       ...prev,
     ])
-
     setMessage('')
     setName('')
     setEditing(false)
   }
 
-  // Update existing message
   const handleUpdate = async (id: string) => {
-    if (!editMessage.trim()) return
-
+    if (!editMessage.trim() || !editName.trim()) return
     const { data, error } = await supabase
       .from('guestbook')
-      .update({ message: editMessage.trim(), updated: new Date().toISOString() })
+      .update({
+        message: editMessage.trim(),
+        name: editName.trim(),
+        updated: new Date().toISOString(),
+      })
       .eq('id', id)
       .eq('user_id', userId)
       .select()
       .single()
-
     if (error) {
       console.error('Update error:', error)
       return
     }
-
     setEntries((prev) =>
       prev.map((entry) =>
         entry.id === id
-          ? { ...entry, message: data.message, date: data.updated?.split('T')[0] || entry.date }
+          ? {
+            ...entry,
+            message: data.message,
+            name: data.name,
+            date: data.updated?.split('T')[0] || entry.date,
+          }
           : entry
       )
     )
-
     setEditingId(null)
   }
+
+  const handleDelete = async (id: string) => {
+    const { error } = await supabase
+      .from('guestbook')
+      .delete()
+      .eq('id', id)
+      .eq('user_id', userId)
+    if (error) {
+      console.error('Delete error:', error)
+      return
+    }
+    setEntries((prev) => prev.filter((entry) => entry.id !== id))
+  }
+
+  const userHasPosted = entries.some((entry) => entry.user_id === userId)
 
   return (
     <section id="guestbook" className="scroll-mt-20 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-2xl font-semibold mb-6">Guestbook</h2>
 
-        <div className="mb-4">
-          <textarea
-            rows={3}
-            value={editing ? message : ''}
-            onFocus={() => setEditing(true)}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Thanks for stopping by. Leave a note!"
-            className={
-              `textarea textarea-bordered w-full resize-none transition-opacity ` +
-              (editing ? 'opacity-100' : 'opacity-60')
-            }
-          />
-        </div>
-
-        {editing && (
+        {!userHasPosted ? (
           <>
-            <input
-              type="text"
-              placeholder="Your name or signature"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="input input-bordered w-full mb-2"
-            />
-            <button
-              onClick={handleSend}
-              className="btn btn-primary w-full"
-              disabled={!message.trim() || !name.trim()}
-            >
-              Send
-            </button>
+            <div className="mb-4">
+              <textarea
+                rows={3}
+                value={editing ? message : ''}
+                onFocus={() => setEditing(true)}
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="Thanks for stopping by. Leave a note!"
+                className={
+                  'textarea textarea-bordered w-full resize-none transition-opacity' +
+                  (editing ? ' opacity-100' : ' opacity-60')
+                }
+              />
+            </div>
+            {editing && (
+              <>
+                <input
+                  type="text"
+                  placeholder="Your name or signature"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  className="input input-bordered w-full mb-2"
+                />
+                <button
+                  onClick={handleSend}
+                  className="btn btn-primary w-full"
+                  disabled={!message.trim() || !name.trim()}
+                >
+                  Send
+                </button>
+              </>
+            )}
           </>
+        ) : (
+          <div className="mb-4 p-4 rounded-md border bg-base-200 text-center text-gray-600">
+            You have already left a message. Thank you!
+          </div>
         )}
 
         <div className="mt-10 space-y-4">
@@ -178,20 +195,33 @@ const Guestbook: React.FC = () => {
               data-theme={entry.theme}
               className="p-4 rounded-md border shadow-sm bg-base-100 relative"
             >
-              <div className="flex justify-between items-center mb-1">
-                {editingId === entry.id ? (
-                  <textarea
-                    className="textarea textarea-bordered w-full"
-                    value={editMessage}
-                    onChange={(e) => setEditMessage(e.target.value)}
-                    rows={3}
-                  />
-                ) : (
-                  <div className="font-semibold text-lg">{entry.message}</div>
-                )}
-                <div className="text-xs opacity-60">{entry.date}</div>
+              <div className="flex justify-between items-start mb-1 space-x-4">
+                <div className="flex-1">
+                  {editingId === entry.id ? (
+                    <>
+                      <textarea
+                        className="textarea textarea-bordered w-full mb-2"
+                        value={editMessage}
+                        onChange={(e) => setEditMessage(e.target.value)}
+                        rows={3}
+                      />
+                      <input
+                        type="text"
+                        className="input input-bordered w-full"
+                        value={editName}
+                        onChange={(e) => setEditName(e.target.value)}
+                        placeholder="Your name or signature"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <div className="font-semibold text-lg">{entry.message}</div>
+                      <div className="text-sm text-gray-500">~ {entry.name}</div>
+                    </>
+                  )}
+                </div>
+                <div className="text-xs opacity-60 whitespace-nowrap">{entry.date}</div>
               </div>
-              <div className="text-sm text-gray-500">~ {entry.name}</div>
 
               {entry.user_id === userId && (
                 <div className="mt-2 flex space-x-2">
@@ -200,6 +230,7 @@ const Guestbook: React.FC = () => {
                       <button
                         className="btn btn-sm btn-success"
                         onClick={() => handleUpdate(entry.id)}
+                        disabled={!editMessage.trim() || !editName.trim()}
                       >
                         Save
                       </button>
@@ -211,15 +242,24 @@ const Guestbook: React.FC = () => {
                       </button>
                     </>
                   ) : (
-                    <button
-                      className="btn btn-sm btn-outline"
-                      onClick={() => {
-                        setEditingId(entry.id)
-                        setEditMessage(entry.message)
-                      }}
-                    >
-                      Edit
-                    </button>
+                    <>
+                      <button
+                        className="btn btn-sm btn-outline"
+                        onClick={() => {
+                          setEditingId(entry.id)
+                          setEditMessage(entry.message)
+                          setEditName(entry.name)
+                        }}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-sm btn-error"
+                        onClick={() => handleDelete(entry.id)}
+                      >
+                        Delete
+                      </button>
+                    </>
                   )}
                 </div>
               )}
