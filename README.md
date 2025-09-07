@@ -20,25 +20,32 @@ deployment
 
 
 ## TODO
-make section components
+deploy!
 
-about = hero section. timeline of my life, idk I need more here
+section work
+about: Large Picture+Timeline.
+experience: larger basic. x translation. 
+work: modal change, smoother transitions
+guestbook: persistent storage
 
-experience = experience cards (2 cards, side by side, cs/business. each card has objective, education, work experience, and skills/certs.)
+## other todos
+HeroDrawer - Gone?
 
-work = project image carousel.
-
-guestbook = guest entry, and guestbook (temp data (includes messages, names, theme (from daisyUi themes) and date. Displayed via stack of lists. each list item is the theme of the person who left it, displays name/signature on the left, followed by the message, and concluded by the date.) I dont know if the temp guest data should be stored in the component or the page or somewhere else. Id prefer it store either in /public or in the guestbook component.
-
-other todo
 theme - create my own
-guestbook text: People matter. You matter. I appreciate your time and attention. Leave me a note so I can give you some in return. your note affects the default theme 
-transitions
+
+guestbook text: People matter. You matter. I appreciate your time and attention. Leave me a note so I can give you some in return. your note affects the default theme
+
+transitions/animations
+
+spotify last played
+last seen map pin
+
+blue page
 
 ## process
 Framework Decision.
 React - it's a standard in the industry and I wanted to deepen my frontend fluency with it. Plus, it has a great ecosystem.
-Next.js - I am quite comfortable with a react backend, thanks to my senior project, and was drawn to the simplified routing. I was also intrigued by the flexible rendering options and built-in performance optimization.
+Next.js - I was drawn to the simplified routing. I was also intrigued by the flexible rendering options and built-in performance optimization.
 Tailwind - better modularity and configurabilty = faster development and easier maintenance. It also streamlined the css and markup context switch. 
 DaisyUI - prebuilt components = faster development and more flexibilty. 
 

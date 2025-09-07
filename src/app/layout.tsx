@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from 'next-themes';
 import Navbar from '@/components/Navbar';
-import HeroDrawer from '@/components/HeroDrawer';
 import Contact from '@/components/Contact';
 
 const geistSans = Geist({
@@ -31,7 +30,6 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem={true}>
           <Navbar/>
-          <HeroDrawer />
           <Contact/>
           <main className="min-h-[calc(100vh-120px)] flex flex-col">{children}</main>
         </ThemeProvider>
