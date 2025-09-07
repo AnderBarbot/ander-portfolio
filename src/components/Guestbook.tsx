@@ -55,7 +55,7 @@ const Guestbook: React.FC = () => {
         name: entry.name,
         theme: entry.theme || 'forest',
         user_id: entry.user_id,
-        date: (entry.updated || entry.created).split('T')[0],
+        date: entry.updated || entry.created,
       }))
       setEntries(mapped)
     }
@@ -87,7 +87,7 @@ const Guestbook: React.FC = () => {
         name: data.name,
         theme: data.theme || 'forest',
         user_id: data.user_id,
-        date: data.created.split('T')[0],
+        date: data.created,
       },
       ...prev,
     ])
@@ -120,7 +120,7 @@ const Guestbook: React.FC = () => {
             ...entry,
             message: data.message,
             name: data.name,
-            date: data.updated?.split('T')[0] || entry.date,
+            date: data.updated || entry.date,
           }
           : entry
       )
@@ -141,27 +141,52 @@ const Guestbook: React.FC = () => {
     setEntries((prev) => prev.filter((entry) => entry.id !== id))
   }
 
-  const userHasPosted = entries.some((entry) => entry.user_id === userId)
+  const getTimeUntilNextPost = (lastDateStr: string) => {
+    const lastDate = new Date(lastDateStr)
+    const now = new Date()
+    const diffMs = now.getTime() - lastDate.getTime()
+    const msInWeek = 7 * 24 * 60 * 60 * 1000
+    const timeLeftMs = msInWeek - diffMs
+
+    if (timeLeftMs <= 0) return null
+
+    const days = Math.floor(timeLeftMs / (24 * 60 * 60 * 1000))
+    const hours = Math.floor((timeLeftMs % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000))
+    return `${days > 0 ? days + ' day' + (days > 1 ? 's' : '') : ''}${days > 0 && hours > 0 ? ' and ' : ''}${hours > 0 ? hours + ' hour' + (hours > 1 ? 's' : '') : ''}`
+  }
+
+  //latest entry
+  const userEntry = entries
+    .filter(entry => entry.user_id === userId)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0]
+  const timeLeft = userEntry ? getTimeUntilNextPost(userEntry.date) : null
+  const canPost = !userEntry || timeLeft === null
+
 
   return (
     <section id="guestbook" className="scroll-mt-20 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">
         <h2 className="text-2xl font-semibold mb-6">Guestbook</h2>
 
-        {!userHasPosted ? (
+        {canPost ? (
           <>
             <div className="mb-4">
               <textarea
                 rows={3}
                 value={editing ? message : ''}
                 onFocus={() => setEditing(true)}
-                onChange={(e) => setMessage(e.target.value)}
+                onChange={(e) => {
+                  if (e.target.value.length <= 200) {
+                    setMessage(e.target.value)
+                  }
+                }}
                 placeholder="Thanks for stopping by. Leave a note!"
                 className={
                   'textarea textarea-bordered w-full resize-none transition-opacity' +
                   (editing ? ' opacity-100' : ' opacity-60')
                 }
               />
+              <div className="text-sm text-right text-gray-500">{message.length}/200</div>
             </div>
             {editing && (
               <>
@@ -169,13 +194,18 @@ const Guestbook: React.FC = () => {
                   type="text"
                   placeholder="Your name or signature"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    if (e.target.value.length <= 20) {
+                      setName(e.target.value)
+                    }
+                  }}
                   className="input input-bordered w-full mb-2"
                 />
+                <div className="text-sm text-right text-gray-500">{name.length}/20</div>
                 <button
                   onClick={handleSend}
                   className="btn btn-primary w-full"
-                  disabled={!message.trim() || !name.trim()}
+                  disabled={!message.trim() || !name.trim() || message.length > 200 || name.length > 20}
                 >
                   Send
                 </button>
@@ -184,7 +214,7 @@ const Guestbook: React.FC = () => {
           </>
         ) : (
           <div className="mb-4 p-4 rounded-md border bg-base-200 text-center text-gray-600">
-            You have already left a message. Thank you!
+            You have already left a message. You can post again in {timeLeft}.
           </div>
         )}
 
@@ -202,16 +232,26 @@ const Guestbook: React.FC = () => {
                       <textarea
                         className="textarea textarea-bordered w-full mb-2"
                         value={editMessage}
-                        onChange={(e) => setEditMessage(e.target.value)}
+                        onChange={(e) => {
+                          if (e.target.value.length <= 200) {
+                            setEditMessage(e.target.value)
+                          }
+                        }}
                         rows={3}
                       />
+                      <div className="text-sm text-right text-gray-500">{editMessage.length}/200</div>
                       <input
                         type="text"
                         className="input input-bordered w-full"
                         value={editName}
-                        onChange={(e) => setEditName(e.target.value)}
+                        onChange={(e) => {
+                          if (e.target.value.length <= 20) {
+                            setEditName(e.target.value)
+                          }
+                        }}
                         placeholder="Your name or signature"
                       />
+                      <div className="text-sm text-right text-gray-500">{editName.length}/20</div>
                     </>
                   ) : (
                     <>
@@ -220,7 +260,9 @@ const Guestbook: React.FC = () => {
                     </>
                   )}
                 </div>
-                <div className="text-xs opacity-60 whitespace-nowrap">{entry.date}</div>
+                <div className="text-xs opacity-60 whitespace-nowrap">
+                  {new Date(entry.date).toLocaleDateString()}
+                </div>
               </div>
 
               {entry.user_id === userId && (
@@ -273,6 +315,7 @@ const Guestbook: React.FC = () => {
       </div>
     </section>
   )
+
 }
 
 export default Guestbook
