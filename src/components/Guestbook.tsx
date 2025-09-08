@@ -163,6 +163,8 @@ const Guestbook: React.FC = () => {
   const canPost = !userEntry || timeLeft === null
 
 
+  
+
   return (
     <section id="guestbook" className="scroll-mt-20 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto">

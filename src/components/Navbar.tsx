@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import { useEffect, useState } from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 
@@ -57,8 +57,6 @@ export default function Navbar() {
     }
   };
 
-
-
   return (
     <div
       className="fixed top-0 left-0 right-0 z-50 group"
@@ -71,8 +69,8 @@ export default function Navbar() {
         className={`transition-transform duration-300 bg-base-100 border-b border-base-300 shadow-md 
         ${showNavbar || isHovering ? "translate-y-0" : "-translate-y-full"}`}
       >
-        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="text-lg font-bold">MySite</div>
+        <div className=" mx-auto px-4 py-3 flex justify-between items-center">
+          <div className="text-lg font-bold"></div>
           <div className="hidden md:flex gap-4 items-center">
             {navItems.map((item) => (
               <button
