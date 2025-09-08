@@ -49,8 +49,6 @@ export default function ProjectCarousel() {
                         priority
                     />
                 </div>
-
-                {/* Overlay Text */}
                 <div className="absolute bottom-0 left-0 w-full z-10 p-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent">
                     <div className="flex items-center space-x-2">
                         <h3 className="text-white text-lg font-semibold">{selectedProject.title}</h3>
@@ -60,9 +58,8 @@ export default function ProjectCarousel() {
                     </div>
                 </div>
             </div>
-
             <div className="mt-6 w-full overflow-x-auto">
-                <div className="flex gap-4 min-w-max px-1 sm:px-4 lg:justify-center">
+                <div className="flex flex-wrap justify-center gap-4 px-1 sm:px-4">
                     {projects.map((project, idx) => {
                         const isSelected = idx === selectedIndex
                         return (
