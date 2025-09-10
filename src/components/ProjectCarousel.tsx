@@ -1,33 +1,57 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 
-const projects = [
-    {
-        id: 1,
-        title: 'Title',
-        subtext: 'Subtext',
-        image: '/project1.png',
-    },
-    {
-        id: 2,
-        title: 'Title',
-        subtext: 'Subtext',
-        image: '/project2.png',
-    },
-    {
-        id: 3,
-        title: 'Title',
-        subtext: 'Subtext',
-        image: '/project3.png',
-    },
-]
+type Project = {
+    id: number
+    title: string
+    subtext: string
+    image: string
+}
 
 export default function ProjectCarousel() {
+    const [projects, setProjects] = useState<Project[]>([])
     const [selectedIndex, setSelectedIndex] = useState(0)
     const [modalOpen, setModalOpen] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState<string | null>(null)
+
+    useEffect(() => {
+        fetch('/projects.json')
+            .then((res) => {
+                if (!res.ok) throw new Error('Failed to load projects')
+                return res.json()
+            })
+            .then((data) => {
+                setProjects(data)
+                setLoading(false)
+            })
+            .catch((err) => {
+                setError(err.message)
+                setLoading(false)
+            })
+    }, [])
+
     const selectedProject = projects[selectedIndex]
+
+    if (loading) {
+        return (
+            <section id="work" className="w-full px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
+                <h2 className="text-2xl font-bold mb-6">Selected Work</h2>
+                <p>Loading projects...</p>
+            </section>
+        )
+    }
+
+    if (error || !selectedProject) {
+        return (
+            <section id="work" className="w-full px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
+                <h2 className="text-2xl font-bold mb-6">Selected Work</h2>
+                <p className="text-red-500">{error || 'No projects found.'}</p>
+            </section>
+        )
+    }
 
     return (
         <section
@@ -49,10 +73,10 @@ export default function ProjectCarousel() {
                         priority
                     />
                 </div>
-                <div className="absolute bottom-0 left-0 w-full z-10 p-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent">
+                <div className="absolute bottom-0 left-0 w-[85%] z-10 p-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent">
                     <div className="flex items-center space-x-2">
                         <h3 className="text-white text-lg font-semibold">{selectedProject.title}</h3>
-                        <p className="text-white text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <p className="text-white text-sm opacity-0 group-hover:scale-1.05 transition-opacity duration-500">
                             {selectedProject.subtext}
                         </p>
                     </div>
@@ -87,7 +111,6 @@ export default function ProjectCarousel() {
                     })}
                 </div>
             </div>
-
 
             {modalOpen && (
                 <div

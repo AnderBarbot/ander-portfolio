@@ -1,0 +1,125 @@
+{
+  "CS": {
+    "Objective": "Software Engineer seeking to enhance the value of technical solutions, through leveraging business acumen and extensive interpersonal experience. Passionate about exploring the intersection of tech & business. Excited to learn.",
+    "Education": {
+      "Degree": "B.S. Computer Science",
+      "Institution": "Boise State University",
+      "Graduation": "May 2025",
+      "Highlights": [
+        "Data Management: MySQL, stream processing, NoSQL data",
+        "Cyber Security: hardening, vulnerability & penetration testing",
+        "Theory: cloud computing, machine learning, natural language processing",
+        "Current projects: EHR platform (sponsored), buddy memory manager (Rust)"
+      ]
+    },
+    "Work Experience": [
+      {
+        "Role": "Server/Bartender",
+        "Company": "Moscow Alehouse",
+        "Location": "Moscow, Idaho",
+        "Dates": "Feb 2023 - Dec 2023",
+        "Highlights": [
+          "Led a team of 6 servers",
+          "Enhanced social management and professional networking skills"
+        ]
+      },
+      {
+        "Role": "Yacht Deckhand/Steward",
+        "Company": "Various Vessels",
+        "Location": "Palma de Mallorca, Spain",
+        "Dates": "Summer 2022",
+        "Highlights": [
+          "Further developed interpersonal and communication skills in formal settings"
+        ]
+      },
+      {
+        "Role": "Server",
+        "Company": "Judy’s Weiser Inn",
+        "Location": "Weiser, Idaho",
+        "Dates": "May 2017 - May 2021",
+        "Highlights": [
+          "Learned to create positive environments and show value through service"
+        ]
+      }
+    ],
+    "Skills / Certs": {
+      "Technical": [
+        "Microsoft Office Specialist: Excel, Word, PowerPoint, PowerBI",
+        "Frameworks: Django, Spring, Flutter",
+        "Languages: C, SQL, JS, Node.js, currently working with Rust"
+      ]
+    }
+  },
+  "BS": {
+    "Objective": "Software Engineer seeking to enhance the value of technical solutions, through leveraging business acumen and extensive interpersonal experience. Passionate about exploring the intersection of tech & business. Excited to learn.",
+    "Education": {
+      "Degree": "B.S. Business – Management & Human Resources",
+      "Institution": "University of Idaho",
+      "Graduation": "Dec 2023",
+      "Highlights": [
+        "Customer & employee engagement: experience maps, value alignment, organizational culture",
+        "Productivity: coaching, continuous feedback, transparent collaboration",
+        "Retention: upskilling, social culture, learning & development",
+        "Relevant Courses: Leading Organizations and People, Strategic Management, Integrated Business & Value Creation",
+        "Relevant Projects: Data Analyst for VandalSolutions, a student-led marketing business"
+      ]
+    },
+    "Work Experience": [
+      {
+        "Role": "Lead Data Analyst",
+        "Company": "VandalSolutions (student-led marketing business)",
+        "Location": "Moscow, Idaho",
+        "Dates": "1 year",
+        "Highlights": [
+          "Led a team of 40 associates",
+          "Developed visuals, metrics, and business recommendations"
+        ]
+      }
+    ],
+    "Skills / Certs": {
+      "Soft Skills": [
+        "Communication: 2 years extemporaneous public speaking",
+        "Leadership: 4 years 4-H (40 members), 2 years FFA (75 members), 1 year BSU Rugby Club (35 members)"
+      ]
+    }
+  },
+  "Master": {
+    "Objective": [
+      "Software Engineer seeking to enhance the value of technical solutions, through leveraging business acumen and extensive interpersonal experience. Passionate about exploring the intersection of tech & business. Excited to learn."
+    ],
+    "Education": [
+      {
+        "Degree": "B.S. Business – Management & Human Resources",
+        "Institution": "University of Idaho",
+        "Graduation": "Dec 2023",
+        "Highlights": [
+          "Customer & employee engagement: experience maps, value alignment, organizational culture",
+          "Productivity: coaching, continuous feedback, transparent collaboration",
+          "Retention: upskilling, social culture, learning & development",
+          "Relevant Courses: Leading Organizations and People, Strategic Management, Integrated Business & Value Creation",
+          "Relevant Projects: Data Analyst for VandalSolutions, a student-led marketing business"
+        ]
+      }
+    ],
+    "Work Experience": [
+      {
+        "Role": "Lead Data Analyst",
+        "Company": "VandalSolutions (student-led marketing business)",
+        "Location": "Moscow, Idaho",
+        "Dates": "1 year",
+        "Highlights": [
+          "Led a team of 40 associates",
+          "Developed visuals, metrics, and business recommendations"
+        ]
+      }
+    ],
+    "Skills / Certs": [
+      {
+        "Soft Skills": [
+          "Communication: 2 years extemporaneous public speaking",
+          "Leadership: 4 years 4-H (40 members), 2 years FFA (75 members), 1 year BSU Rugby Club (35 members)"
+        ]
+      }
+    ]
+  }
+}

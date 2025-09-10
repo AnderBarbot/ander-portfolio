@@ -29,11 +29,11 @@ work: modal change, smoother transitions
 guestbook: persistent storage
 
 ## other todos
-HeroDrawer - Gone?
+About page: everything
 
-theme - create my own
+themeswitcher: wayyyy out on the z.
 
-guestbook text: People matter. You matter. I appreciate your time and attention. Leave me a note so I can give you some in return. your note affects the default theme
+guestbook: resist scrolling into it
 
 transitions/animations
 
@@ -42,7 +42,7 @@ last seen map pin
 
 blue page
 
-Ideas: hover = side highlight for side scroll, bar selector w a box that follows the mouse (when its in the box) and has additional physics (adds entertainment factor, custom scroll bar (transitions, me doing things...?). life timeline is clickable. nav bar. 
+Ideas: hover = side highlight for side scroll, bar selector w a box that follows the mouse (when its in the box) and has additional physics. custom scroll bar (transitions, me doing things...?). life timeline is clickable. nav bar. 
 Overall: (make a small, good product. not a big, mediocre one. ) animations?
 
 ## process

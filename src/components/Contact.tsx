@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaUser, FaLinkedinIn} from 'react-icons/fa';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaUser, FaLinkedinIn, FaFileDownload } from 'react-icons/fa';
 
 export default function Contact() {
   const [open, setOpen] = useState(false);
@@ -15,18 +15,20 @@ export default function Contact() {
           role="button"
           className="btn btn-lg btn-circle btn-success"
           onClick={() => setOpen(!open)}
-          title="Contact"
+          title="Contact Me"
         >
           <FaUser />
         </div>
 
         {/* Main button when FAB is open */}
-        <button
-          className="fab-main-action btn btn-circle btn-lg"
-          title="Contact Options"
+        <a
+          href="/anderbarbotresume.pdf"
+          download
+          className="btn btn-lg btn-circle"
+          title="Learn About Me"
         >
-          <FaUser/>
-        </button>
+          <FaFileDownload />
+        </a>
 
         {/* Contact Buttons */}
         <a
@@ -53,7 +55,7 @@ export default function Contact() {
           title="Find me"
         >
           <FaMapMarkerAlt />
-        </a>
+        </a>z
 
         <a
           href="https://www.linkedin.com/in/ander-barbot-025627183"
