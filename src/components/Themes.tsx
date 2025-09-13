@@ -4,6 +4,13 @@ import { MdOutlineBusinessCenter, MdOutlineNightlight, MdOutlineForest, MdTv, Md
 import { IoMdRocket } from 'react-icons/io';
 import { GiCupcake, GiBee, GiEmerald, GiRoundStar, GiDragonHead, GiWaterDrop, GiOctopus, GiPumpkin, GiBlackFlag, GiSunset, GiCoffeeCup, GiAlienBug, GiBat, GiPalette, GiFlowerPot, GiFairyWand } from 'react-icons/gi';
 
+export const defaultLight = 'fantasy';
+export const defaultDark = 'forest';
+
+export function isLight(theme: string): boolean {
+  return lightThemes.includes(theme)
+}
+
 export const lightThemes = [
   'cupcake',
   'bumblebee',
@@ -36,9 +43,6 @@ export const darkThemes = [
   'aqua',
   'synthwave',
 ];
-
-export const defaultLight = 'fantasy';
-export const defaultDark = 'forest';
 
 export const themeIcons: Record<string, JSX.Element> = {
   // Light themes

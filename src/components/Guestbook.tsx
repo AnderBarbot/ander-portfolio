@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import { themeIcons } from './Themes'
+import { themeIcons,isLight } from './Themes'
 import { supabase } from '../../supabase'
 
 type Entry = {
@@ -75,13 +75,15 @@ const Guestbook: React.FC = () => {
   //API's
   const handleSend = async () => {
     if (!message.trim() || !name.trim()) return
+    const sentTheme = theme || 'forest';
+
     const { data, error } = await supabase
       .from('guestbook')
       .insert([
         {
           name: name.trim(),
           message: message.trim(),
-          theme: theme || 'forest',
+          theme: sentTheme,
           user_id: userId,
         },
       ])
@@ -96,7 +98,7 @@ const Guestbook: React.FC = () => {
         id: data.id,
         message: data.message,
         name: data.name,
-        theme: data.theme || 'forest',
+        theme: data.theme,
         user_id: data.user_id,
         date: data.created,
       },
@@ -105,6 +107,32 @@ const Guestbook: React.FC = () => {
     setMessage('')
     setName('')
     setEditing(false)
+
+    //update default themes
+  const { count } = await supabase
+    .from("guestbook")
+    .select("id", { count: "exact", head: true })
+    .eq("theme", sentTheme);
+  if (count !== null) {
+    const { data: meta } = await supabase
+      .from("theme_defaults")
+      .select("*")
+      .single();
+    let updates: Record<string, any> = {};
+
+    if (isLight(sentTheme) && count > meta.most_used_light_count) {
+      updates.defaultLight = sentTheme;
+      updates.most_used_light_count = count;
+    }
+    if (!isLight(sentTheme) && count > meta.most_used_dark_count) {
+      updates.defaultDark = sentTheme;
+      updates.most_used_dark_count = count;
+    }
+
+    if (Object.keys(updates).length > 0) {
+      await supabase.from("theme_defaults").update(updates).eq("id", meta.id);
+    }
+  }
   }
 
   const handleUpdate = async (id: string) => {
@@ -202,12 +230,10 @@ const Guestbook: React.FC = () => {
     };
   }, [editing, message, name]);
 
-
-  // Calculate dynamic horizontal offset for centering
   const maxPages = Math.min(pages.length, 5);
-  const cardSpacingVW = 5; // horizontal offset per card in vw
+  const cardSpacingVW = 5;
   const totalOffsetVW = cardSpacingVW * (maxPages - 1);
-  const baseLeftVW = -totalOffsetVW / 2; // center the stack
+  const baseLeftVW = -totalOffsetVW / 2;
 
   return (
   <section id="guestbook" className="scroll-mt-20 py-12 px-4 sm:px-6 lg:px-8">
@@ -283,7 +309,7 @@ ps: your note will affect the default theme calculation. It's my way of showing 
         <div
           className="relative w-full h-[700px]"
           style={{
-            left: `${baseLeftVW}vw`, // dynamically center the stack
+            left: `${baseLeftVW}vw`,
           }}
         >
           {pages.map((pageEntries, pageIndex) => {

@@ -1,20 +1,51 @@
-'use client';
+'use client'
 
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
-import { lightThemes, darkThemes, themeIcons, defaultDark, defaultLight } from './Themes';
+import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
+import { lightThemes, darkThemes, themeIcons, defaultDark, defaultLight } from './Themes'
+import { supabase } from '../../supabase'
 
 export default function ThemeSwitcherDropdown() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, systemTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
+  const [defaults, setDefaults] = useState({ dark: defaultDark, light: defaultLight })
 
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
+  //fetch default themes from supabase, then set theme based on system preference. plenty of fallbacks
+  useEffect(() => {
+    setMounted(true)
+    const fetchDefaults = async () => {
+      const savedTheme = localStorage.getItem('theme')
+      if (savedTheme) {
+        return
+      }
+      const { data } = await supabase.from('theme_defaults').select('*').single()
+      if (data) {
+        setDefaults({
+          dark: data.default_dark ?? defaultDark,
+          light: data.default_light ?? defaultLight,
+        })
+        const prefersDark =
+          systemTheme === 'dark' ||
+          (!systemTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        setTheme(prefersDark ? data.default_dark ?? defaultDark : data.default_light ?? defaultLight)
+      } else {
+        const prefersDark =
+          systemTheme === 'dark' ||
+          (!systemTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)
 
-  const isDark = darkThemes.includes(theme ?? '');
-  const currentThemes = isDark ? darkThemes : lightThemes;
-  const oppositeDefault = isDark ? defaultLight : defaultDark;
-  const oppositeLabel = isDark ? 'Light' : 'Dark';
+        setTheme(prefersDark ? defaultDark : defaultLight)
+      }
+    }
+    fetchDefaults()
+  }, [systemTheme, setTheme])
+
+
+  if (!mounted) return null
+
+  const isDark = darkThemes.includes(theme ?? '')
+  const currentThemes = isDark ? darkThemes : lightThemes
+  const oppositeDefault = isDark ? defaults.light : defaults.dark
+  const oppositeLabel = isDark ? 'Light' : 'Dark'
 
   return (
     <div className="dropdown dropdown-end">
@@ -30,7 +61,6 @@ export default function ThemeSwitcherDropdown() {
           </svg>
         )}
       </button>
-
 
       {/* Dropdown content */}
       <div
