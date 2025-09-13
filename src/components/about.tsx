@@ -13,45 +13,37 @@ type TimelineNode = {
 
 const timeline: TimelineNode[] = [
   {
-    id: 'Adventure',
-    label: 'Adventure',
-    images: ['/profile/home1.jpg'],
-    text: 'One of many adventures along the way...'
-  },
-  {
-    id: 'Hawaii',
-    label: 'Hawaii, December 2024',
-    images: [
-      '/profile/hawaii20241.jpg', '/profile/hawaii20242.jpg',
+    id: 'Travelling',
+    label: 'Travelling',
+    images: ['/profile/hawaii20241.jpg', '/profile/hawaii20242.jpg',
       '/profile/hawaii20243.jpg', '/profile/hawaii20245.jpg',
       '/profile/hawaii20245.jpg', '/profile/hawaii20246.jpg',
       '/profile/hawaii20247.jpg', '/profile/hawaii20248.jpg',
-      '/profile/hawaii20249.jpg'
+      '/profile/hawaii20249.jpg', '/profile/europe1.jpg', '/profile/europe2.jpg', '/profile/europe3.jpg',
     ],
-    text: 'My aunt and uncle were wintering near Kailua Kona, HI. I got free housing, they got free childcare :)'
+    text: "I love the freedom of travel. discovered at 16, when I went to visit a foreign exchange student in Spain, and continuing every summer since then. Still, there's something to be said for stability, for home."
   },
   {
-    id: 'College',
-    label: 'College',
-    images: ['/profile/climbing1.jpg'],
-    text: 'Short descriptor about college...'
+    id: 'Education',
+    label: 'Education',
+    images: [
+    '/profile/climbing1.jpg', '/profile/profile1.jpg'
+  ],
+    text: "I graduated Highschool in 2020, with an associates of liberal arts. I chose to double major in computer science and business, because I wanted to bridge the two worlds. I graduated with a degree in Business from U of I in 2023, and a degree in Computer Science from BSU in 2025."
   },
   {
-    id: 'Europe',
-    label: 'Europe',
-    images: ['/profile/europe1.jpg', '/profile/europe2.jpg', '/profile/europe3.jpg'],
-    text: 'Another fun stop on the journey...'
-  },
-  {
-    id: 'Blue',
-    label: 'Blue',
+    id: 'Family',
+    label: 'Family',
     images: [
       '/profile/blue0.jpg', '/profile/blue1.jpg', '/profile/blue2.jpg',
       '/profile/blue3.jpg', '/profile/blue4.jpg', '/profile/blue5.jpg',
       '/profile/blue6.jpg', '/profile/blue7.jpg', '/profile/blue8.jpg',
-      '/profile/blue9.jpg'
+      '/profile/blue9.jpg', '/profile/home1.jpg',
     ],
-    text: 'Short descriptor about career...'
+    text: `I love my family.
+    I grew up in a big italian/portuguese/basque family. 25 of us lived within a mile of each other, and family dinners were biweekly affairs.
+    My family has expanded to include my close friends and my cat Blu. I look forward to the day that it includes kids of my own.
+    `
   }
 ]
 
@@ -59,7 +51,7 @@ export default function About() {
 
   //set initial node.
   const [selected, setSelected] = useState<TimelineNode>(
-    timeline.find(node => node.id === 'Blue')!
+    timeline.find(node => node.id === 'Family')!
   )
 
   const [imageIndex, setImageIndex] = useState(0)

@@ -152,7 +152,7 @@ export default function StackedCards() {
     <section id="experience" className="scroll-mt-20 py-12">
       <div
         className={`relative max-w-5xl mx-auto group 
-        ${isSmallScreen ? 'w-full h-[80vh]' : 'flex justify-center items-start gap-6'}`}
+        ${isSmallScreen ? 'w-full h-[80vh] overflow-auto' : 'flex justify-center items-start gap-6'}`}
       >
         {/* CS */}
         <div
@@ -160,7 +160,7 @@ export default function StackedCards() {
           style={cardPosition("CS")}
           className={`card card-compact bg-base-200 shadow-xl transition-all duration-500 ease-in-out
             ${isSmallScreen 
-              ? 'absolute left-1/2 -translate-x-1/2 w-11/12 h-full' 
+              ? 'absolute left-1/2 -translate-x-1/2 w-11/12 h-min-full' 
               : 'relative flex-1 min-w-0'}
             ${!isSmallScreen ? 'hover:scale-[1.4] hover:z-20 hover:shadow-2xl hover:-translate-x-[-70px] hover:opacity-100' : ''}
           `}
@@ -177,7 +177,7 @@ export default function StackedCards() {
           style={cardPosition("BS")}
           className={`card card-compact bg-base-200 shadow-xl transition-all duration-500 ease-in-out
             ${isSmallScreen 
-              ? 'absolute left-1/2 -translate-x-1/2 w-11/12 h-full' 
+              ? 'absolute left-1/2 -translate-x-1/2 w-11/12 h-min-full' 
               : 'relative flex-1 min-w-0'}
             ${!isSmallScreen ? 'hover:scale-[1.4] hover:z-20 hover:shadow-2xl hover:-translate-x-[70px] hover:opacity-100' : ''}
           `}

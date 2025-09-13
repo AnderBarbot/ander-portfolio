@@ -7,7 +7,7 @@ export default function Contact() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-1000">
       <div className={`fab fab-flower ${open ? 'active' : ''}`}>
         {/* Trigger FAB */}
         <div
@@ -22,7 +22,7 @@ export default function Contact() {
 
         {/* Main button when FAB is open */}
         <a
-          href="/anderbarbotresume.pdf"
+          href="/AnderBarbotResume.pdf"
           download
           className="btn btn-lg btn-circle"
           title="Learn About Me"
@@ -30,11 +30,10 @@ export default function Contact() {
           <FaFileDownload />
         </a>
 
-        {/* Contact Buttons */}
         <a
           href="tel:2082302102"
           className="btn btn-lg btn-circle"
-          title="Call Me"
+          title="Call Me at 208-230-2102"
         >
           <FaPhone />
         </a>
@@ -42,7 +41,7 @@ export default function Contact() {
         <a
           href="mailto:anderbarbot@gmail.com"
           className="btn btn-lg btn-circle"
-          title="Email Me"
+          title="Email Me at anderbarbot@gmail.com"
         >
           <FaEnvelope />
         </a>
@@ -55,7 +54,7 @@ export default function Contact() {
           title="Find me"
         >
           <FaMapMarkerAlt />
-        </a>z
+        </a>
 
         <a
           href="https://www.linkedin.com/in/ander-barbot-025627183"

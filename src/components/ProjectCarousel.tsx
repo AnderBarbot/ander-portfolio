@@ -38,7 +38,7 @@ export default function ProjectCarousel() {
     if (loading) {
         return (
             <section id="work" className="w-full px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
-                <h2 className="text-2xl font-bold mb-6">Selected Work</h2>
+                <h2 className="text-2xl font-bold mb-6">Projects</h2>
                 <p>Loading projects...</p>
             </section>
         )
@@ -47,7 +47,7 @@ export default function ProjectCarousel() {
     if (error || !selectedProject) {
         return (
             <section id="work" className="w-full px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto">
-                <h2 className="text-2xl font-bold mb-6">Selected Work</h2>
+                <h2 className="text-2xl font-bold mb-6">Projects</h2>
                 <p className="text-red-500">{error || 'No projects found.'}</p>
             </section>
         )
@@ -58,7 +58,7 @@ export default function ProjectCarousel() {
             id="work"
             className="scroll-mt-20 w-full px-4 sm:px-6 lg:px-8 max-w-screen-xl mx-auto"
         >
-            <h2 className="text-2xl font-bold mb-6">Selected Work</h2>
+            <h2 className="text-2xl font-bold mb-6">Projects</h2>
 
             <div
                 className="relative group cursor-pointer rounded-lg overflow-hidden shadow-lg"
