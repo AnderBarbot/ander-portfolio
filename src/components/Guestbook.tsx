@@ -118,7 +118,8 @@ const Guestbook: React.FC = () => {
       .from("theme_defaults")
       .select("*")
       .single();
-    let updates: Record<string, any> = {};
+const updates: Record<string, string | number> = {};
+
 
     if (isLight(sentTheme) && count > meta.most_used_light_count) {
       updates.defaultLight = sentTheme;
