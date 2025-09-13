@@ -59,12 +59,12 @@ export default function Navbar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 group"
+      className="fixed top-0 left-0 right-0 z-1000 group"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       onTouchStart={() => setIsHovering(true)}
     >
-      <div className="h-4 w-full" />
+      <div className="h-3 w-full" />
       <nav
         className={`transition-transform duration-300 bg-base-100 border-b border-base-300 shadow-md 
         ${showNavbar || isHovering ? "translate-y-0" : "-translate-y-full"}`}
