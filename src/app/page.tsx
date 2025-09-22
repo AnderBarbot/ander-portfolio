@@ -1,4 +1,4 @@
-import ProjectCarousel from "@/components/ProjectCarousel";
+import Projects from "@/components/Projects";
 import Guestbook from "@/components/Guestbook";
 import Experience from "@/components/Experience";
 import About from "@/components/about";
@@ -12,7 +12,7 @@ export default function Home() {
 
         <Experience />
 
-        <ProjectCarousel />
+        <Projects />
 
         <div className="scroll-smooth scroll-snap-y-mandatory" style={{ scrollSnapType: 'y mandatory', overflowY: 'scroll', height: '100vh' }}>
           <Guestbook />

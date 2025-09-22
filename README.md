@@ -20,30 +20,20 @@ deployment
 
 
 ## TODO
-deploy!
-
-section work
-about: Large Picture+Timeline.
-experience: larger basic. x translation. 
-work: modal change, smoother transitions
-guestbook: persistent storage
-
-## other todos
-About page: everything
-
-themeswitcher: wayyyy out on the z.
-
 guestbook: resist scrolling into it
 
 transitions/animations
-
 spotify last played
 last seen map pin
-
 blue page
 
 Ideas: hover = side highlight for side scroll, bar selector w a box that follows the mouse (when its in the box) and has additional physics. custom scroll bar (transitions, me doing things...?). life timeline is clickable. nav bar. 
-Overall: (make a small, good product. not a big, mediocre one. ) animations?
+Overall: (make a small, good product. not a big, mediocre one. ) animations? 
+
+## other todos
+
+
+
 
 ## process
 techstack decisions

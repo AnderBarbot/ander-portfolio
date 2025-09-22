@@ -1,20 +1,58 @@
 [
-    {
-        "id": 1,
-        "title": "Project One",
-        "subtext": "Description of project one.",
-        "image": "/project1.png"
-    },
-    {
-        "id": 2,
-        "title": "Project Two",
-        "subtext": "Description of project two.",
-        "image": "/project2.png"
-    },
-    {
-        "id": 3,
-        "title": "Project Three",
-        "subtext": "Description of project three.",
-        "image": "/project3.png"
-    }
+  {
+    "id": 1,
+    "title": "Buddy Memory Manager",
+    "subtext": "Implementation of a buddy memory system to allocate and manage dynamic memory. Automatically split and coalesced memory blocks, minimizing fragmentation and optimizing memory usage. The project involved low-level memory manipulation and efficient data structures to track free and allocated blocks.",
+    "image": "/proj-buddy.png",
+    "tech": ["C"],
+    "concepts": ["**Memory Management**", "Buddy System", "Dynamic Allocation", "Low-Level Programming"]
+  },
+  {
+    "id": 2,
+    "title": "Electronic Health Record (EHR) System",
+    "subtext": "As a capstone project, our team worked with a sponsor to develop a highly flexible and maintainable EHR system, to be used in a variety of healthcare industries. Following a 2 week agile development cycle, I volunteered for the role of Product Owner. Our team came into this project a semester after it was started. The existing codebase was sprawling, unorganized and poorly documented, and our team had no experience with legacy software nor with the healthcare field. we felt quite overwhelmed. As the Product Owner, took the lead on parsing through the project, understanding it and updating the documentation as I went. After meeting with the sponsor, our team emphasized security, modularity, and granular control, in an attempt to enhance customizability, maintainability, and ease of entry into the project. As the lead backend architect, I designed many API's and access controls. As the Product owner and the team member with the deepest understanding of the project, I set goals for and assisted other team members with frontend design.",
+    "image": "/proj-ehr.png",
+    "tech": ["React.js", "Node.js", "SQLite", "Express", "JWT - Auth", "Github Actions"],
+    "concepts": ["**Agile - Product Owner**", "Legacy Software", "Role-based Access Controls", "Scalable Architecture", "User-Centeric Design", "RESTful design", "Continuous Integration & Deployment", "ORM vs raw SQL (continued with raw, documented for ORM"]
+  },
+  {
+    "id": 3,
+    "title": "Anomaly Detection using a NN",
+    "subtext": "Worked to identify anomalous images using cifar-10 data set. Consistently achieved 90% accuracy or better. Competed against the class to see who could detect everyone else's poisoned data with the highest accuracy. Advanced into a real world application: using the truthseeker dataset, identified truthfulness of politically charged tweets. utilized NLP - BERT and a finely tuned NN to achieve 95+% accuracy. The project involved data preprocessing, feature extraction, model training, and evaluation.",
+    "image": "/proj-NN.png",
+    "tech": ["Python", "BERT", "TensorFlow", "PyTorch", "OpenCV", "Pandas"],
+    "concepts": ["**Adversarial Attacks**", "**Anomaly Detection**", "Neural Networks", "NLP - Tokenization"]
+  },
+  {
+    "id": 4,
+    "title": "School Database System",
+    "subtext": "Built a relational database system to model and manage school operations. Initially, it was a local app utilizing a school-hosted database, but eventually, both the app and database were deployed on heroku. The project involved conceptual and logical database design, database implementation, query optimization, and heroku deployment.",
+    "image": "/proj-database.png",
+    "tech": ["SQL", "JDMS", "Heroku" ],
+    "concepts": ["**Database Design**", "RESTful design", "Query Optimization", "Enitity-Relationship Modeling", "ACID"]
+  }, 
+  {
+    "id": 5,
+    "title": "Flashcard App",
+    "subtext": "As an agile development project, our team had weekly sprints and rotated roles each week. This wasn't my first experience with agile, but it was the most in-depth. We worked with the professor to create a flashcard app, emphasizing cross-platform compatibility. functionality included: create/edit/review flashcards and their collections, end-to-end testing (Cypress), Continuous integration and deployment pipelines (GitHub Actions)",
+    "image": "/proj-flashcards.png",
+    "tech": ["TypeScript", "SQLite", "Cypress","Github Actions"],
+    "concepts": ["**Agile Development - all roles**", "Full-Stack Development", "Continuous Integration & Deployment", "Automated Testing"]
+  },
+  {
+    "id": 6,
+    "title": "Sales Data to Business Intelligence",
+    "subtext": "Transformed regional sales data into actionable insights through azure data analysis and interactive dashboards in Tableau. Based on those insights, I provided an action proposal. The class decided to 'move forward' with my action proposal out of the 15 presented.",
+    "image": "/proj-sales.png",
+    "tech": ["Azure", "Tableau", "Powerpoint"],
+    "concepts": ["**Business Intelligence**", "Data Visualization", "Decision Support", "KPI metric design"]
+  },
+  {
+    "id": 7,
+    "title": "Personal Projects",
+    "subtext": "Smaller projects completed entirely for myself or for bragging rights. Sliding Puzzle game (Python), a Stickman Game (Java), deployment of a Media Server using Docker containers, a Construction Contractor App (flutter), an RSA Large Secret key cracker (python), and this Portfolio Website built (Next.js, TailwindCSS, supabase).",
+    "image": "/proj-personal.png",
+    "tech": ["Python", "Java", "Docker", "Flutter", "Next.js", "TailwindCSS", "Supabase"],
+    "concepts": ["**Self-Driven Learning**", "Full-Stack Development", "Mobile applications", "Containerization", "Cybersecurity", "Responsive design", "State Management" ]
+  }
 ]
