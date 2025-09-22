@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import Image from 'next/image'
 
 type TimelineNode = {
   id: string
@@ -15,20 +16,19 @@ const timeline: TimelineNode[] = [
   {
     id: 'Travelling',
     label: 'Travelling',
-    images: ['/profile/hawaii20241.jpg', '/profile/hawaii20242.jpg',
+    images: [
+      '/profile/hawaii20241.jpg', '/profile/hawaii20242.jpg',
       '/profile/hawaii20243.jpg', '/profile/hawaii20245.jpg',
-      '/profile/hawaii20245.jpg', '/profile/hawaii20246.jpg',
-      '/profile/hawaii20247.jpg', '/profile/hawaii20248.jpg',
-      '/profile/hawaii20249.jpg', '/profile/europe1.jpg', '/profile/europe2.jpg', '/profile/europe3.jpg',
+      '/profile/hawaii20246.jpg', '/profile/hawaii20247.jpg',
+      '/profile/hawaii20248.jpg', '/profile/hawaii20249.jpg',
+      '/profile/europe1.jpg', '/profile/europe2.jpg', '/profile/europe3.jpg',
     ],
-    text: "I love the freedom of travel. discovered at 16, when I went to visit a foreign exchange student in Spain, and continuing every summer since then. Still, there's something to be said for stability, for home."
+    text: "I love the freedom of travel. Discovered at 16, when I went to visit a foreign exchange student in Spain, and continuing every summer since then. Still, there's something to be said for stability, for home."
   },
   {
     id: 'Education',
     label: 'Education',
-    images: [
-    '/profile/climbing1.jpg', '/profile/profile1.jpg'
-  ],
+    images: ['/profile/climbing1.jpg', '/profile/profile1.jpg'],
     text: "I graduated Highschool in 2020, with an associates of liberal arts. I chose to double major in computer science and business, because I wanted to bridge the two worlds. I graduated with a degree in Business from U of I in 2023, and a degree in Computer Science from BSU in 2025."
   },
   {
@@ -48,20 +48,15 @@ const timeline: TimelineNode[] = [
 ]
 
 export default function About() {
-
-  //set initial node.
   const [selected, setSelected] = useState<TimelineNode>(
-    timeline.find(node => node.id === 'Family')!
+    timeline.find((n) => n.id === 'Family')!
   )
-
   const [imageIndex, setImageIndex] = useState(0)
 
   const handleImageChange = (dir: 'prev' | 'next') => {
     const total = selected.images.length
     setImageIndex((prev) =>
-      dir === 'next'
-        ? (prev + 1) % total
-        : (prev - 1 + total) % total
+      dir === 'next' ? (prev + 1) % total : (prev - 1 + total) % total
     )
   }
 
@@ -72,33 +67,43 @@ export default function About() {
       {/* Slideshow */}
       <div className="relative h-[50vh] w-full overflow-hidden group">
         <AnimatePresence mode="wait">
-          <motion.img
+          <motion.div
             key={selected.images[imageIndex]}
-            src={selected.images[imageIndex]}
-            alt={selected.label}
-            className="w-full h-full object-contain"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.6 }}
-          />
+            className="absolute inset-0"
+          >
+            <Image
+              src={selected.images[imageIndex]}
+              alt={selected.label}
+              fill
+              sizes="100vw"
+              priority
+              className="object-contain"
+            />
+          </motion.div>
         </AnimatePresence>
 
-        {selected.images.length > 1 && ['prev', 'next'].map((dir) => {
-          const Icon = dir === 'prev' ? ChevronLeft : ChevronRight
-          const positionClass = dir === 'prev' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l'
-          return (
-            <button
-              key={dir}
-              onClick={() => handleImageChange(dir as 'prev' | 'next')}
-              className={`absolute top-0 h-full px-4 hidden group-hover:flex items-center justify-center ${positionClass} from-black/40 to-transparent`}
-            >
-              <Icon className="text-white w-8 h-8" />
-            </button>
-          )
-        })}
+        {selected.images.length > 1 &&
+          (['prev', 'next'] as const).map((dir) => {
+            const Icon = dir === 'prev' ? ChevronLeft : ChevronRight
+            const positionClass =
+              dir === 'prev' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l'
+            return (
+              <button
+                key={dir}
+                onClick={() => handleImageChange(dir)}
+                className={`absolute top-0 h-full px-4 hidden group-hover:flex items-center justify-center ${positionClass} from-black/40 to-transparent`}
+              >
+                <Icon className="text-white w-8 h-8" />
+              </button>
+            )
+          })}
       </div>
 
+      {/* Text + Timeline */}
       <div className="flex flex-col items-center p-6">
         <AnimatePresence mode="wait">
           <motion.p
@@ -113,7 +118,6 @@ export default function About() {
           </motion.p>
         </AnimatePresence>
 
-        {/* Timeline */}
         <div className="relative flex items-center h-45 w-full overflow-x-auto justify-center gap-8">
           {timeline.map((node, index) => (
             <button
@@ -124,11 +128,17 @@ export default function About() {
               }}
               className="flex flex-col items-center relative"
             >
-              <span className={`absolute ${index % 2 === 0 ? '-top-8' : 'top-10'} text-sm`}>
+              <span
+                className={`absolute ${
+                  index % 2 === 0 ? '-top-8' : 'top-10'
+                } text-sm`}
+              >
                 {node.label}
               </span>
               <motion.div
-                className={`w-6 h-6 rounded-full ${isSelected(node) ? 'bg-primary' : 'bg-base-300'}`}
+                className={`w-6 h-6 rounded-full ${
+                  isSelected(node) ? 'bg-primary' : 'bg-base-300'
+                }`}
                 animate={{ scale: isSelected(node) ? 1.3 : 1 }}
                 transition={{ duration: 0.3 }}
               />
