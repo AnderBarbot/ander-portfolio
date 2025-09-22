@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import Image from 'next/image'
+import Head from 'next/head'
 
 type TimelineNode = {
   id: string
@@ -17,11 +18,17 @@ const timeline: TimelineNode[] = [
     id: 'Travelling',
     label: 'Travelling',
     images: [
-      '/profile/hawaii20241.jpg', '/profile/hawaii20242.jpg',
-      '/profile/hawaii20243.jpg', '/profile/hawaii20245.jpg',
-      '/profile/hawaii20246.jpg', '/profile/hawaii20247.jpg',
-      '/profile/hawaii20248.jpg', '/profile/hawaii20249.jpg',
-      '/profile/europe1.jpg', '/profile/europe2.jpg', '/profile/europe3.jpg',
+      '/profile/hawaii20241.jpg',
+      '/profile/hawaii20242.jpg',
+      '/profile/hawaii20243.jpg',
+      '/profile/hawaii20245.jpg',
+      '/profile/hawaii20246.jpg',
+      '/profile/hawaii20247.jpg',
+      '/profile/hawaii20248.jpg',
+      '/profile/hawaii20249.jpg',
+      '/profile/europe1.jpg',
+      '/profile/europe2.jpg',
+      '/profile/europe3.jpg',
     ],
     text: "I love the freedom of travel. Discovered at 16, when I went to visit a foreign exchange student in Spain, and continuing every summer since then. Still, there's something to be said for stability, for home."
   },
@@ -48,104 +55,123 @@ const timeline: TimelineNode[] = [
 ]
 
 export default function About() {
-  const [selected, setSelected] = useState<TimelineNode>(
-    timeline.find((n) => n.id === 'Family')!
-  )
+  const [selected, setSelected] = useState<TimelineNode>(timeline.find((n) => n.id === 'Family')!)
   const [imageIndex, setImageIndex] = useState(0)
 
   const handleImageChange = (dir: 'prev' | 'next') => {
     const total = selected.images.length
-    setImageIndex((prev) =>
-      dir === 'next' ? (prev + 1) % total : (prev - 1 + total) % total
-    )
+    setImageIndex((prev) => (dir === 'next' ? (prev + 1) % total : (prev - 1 + total) % total))
   }
 
   const isSelected = (node: TimelineNode) => selected.id === node.id
 
   return (
-    <section id="about" className="w-full min-h-screen flex flex-col">
-      {/* Slideshow */}
-      <div className="relative h-[50vh] w-full overflow-hidden group">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={selected.images[imageIndex]}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={selected.images[imageIndex]}
-              alt={selected.label}
-              fill
-              sizes="100vw"
-              priority
-              className="object-contain"
-            />
-          </motion.div>
-        </AnimatePresence>
+    <>
+      <Head>
+        {/* Preload first image of each timeline node */}
+        {timeline.map((node) => (
+          <link key={node.id} rel="preload" href={node.images[0]} as="image" />
+        ))}
+      </Head>
 
-        {selected.images.length > 1 &&
-          (['prev', 'next'] as const).map((dir) => {
-            const Icon = dir === 'prev' ? ChevronLeft : ChevronRight
-            const positionClass =
-              dir === 'prev' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l'
-            return (
-              <button
-                key={dir}
-                onClick={() => handleImageChange(dir)}
-                className={`absolute top-0 h-full px-4 hidden group-hover:flex items-center justify-center ${positionClass} from-black/40 to-transparent`}
-              >
-                <Icon className="text-white w-8 h-8" />
-              </button>
-            )
-          })}
-      </div>
-
-      {/* Text + Timeline */}
-      <div className="flex flex-col items-center p-6">
-        <AnimatePresence mode="wait">
-          <motion.p
-            key={selected.id}
-            className="max-w-3xl text-center"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.5 }}
-          >
-            {selected.text}
-          </motion.p>
-        </AnimatePresence>
-
-        <div className="relative flex items-center h-45 w-full overflow-x-auto justify-center gap-8">
-          {timeline.map((node, index) => (
-            <button
-              key={node.id}
-              onClick={() => {
-                setSelected(node)
-                setImageIndex(0)
-              }}
-              className="flex flex-col items-center relative"
+      <section id="about" className="w-full min-h-screen flex flex-col">
+        {/* Slideshow */}
+        <div className="relative h-[50vh] w-full overflow-hidden group">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selected.images[imageIndex]}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6 }}
+              className="absolute inset-0"
             >
-              <span
-                className={`absolute ${
-                  index % 2 === 0 ? '-top-8' : 'top-10'
-                } text-sm`}
-              >
-                {node.label}
-              </span>
-              <motion.div
-                className={`w-6 h-6 rounded-full ${
-                  isSelected(node) ? 'bg-primary' : 'bg-base-300'
-                }`}
-                animate={{ scale: isSelected(node) ? 1.3 : 1 }}
-                transition={{ duration: 0.3 }}
+              <Image
+                src={selected.images[imageIndex]}
+                alt={selected.label}
+                fill
+                sizes="100vw"
+                priority
+                className="object-contain"
               />
-            </button>
-          ))}
+            </motion.div>
+          </AnimatePresence>
+
+          {selected.images.length > 1 &&
+            (['prev', 'next'] as const).map((dir) => {
+              const Icon = dir === 'prev' ? ChevronLeft : ChevronRight
+              const positionClass =
+                dir === 'prev' ? 'left-0 bg-gradient-to-r' : 'right-0 bg-gradient-to-l'
+              return (
+                <button
+                  key={dir}
+                  onClick={() => handleImageChange(dir)}
+                  className={`absolute top-0 h-full px-4 hidden group-hover:flex items-center justify-center ${positionClass} from-black/40 to-transparent`}
+                >
+                  <Icon className="text-white w-8 h-8" />
+                </button>
+              )
+            })}
         </div>
-      </div>
-    </section>
+
+        {/* Hidden preload for prev and next images */}
+        <div style={{ display: 'none' }}>
+          <Image
+            src={selected.images[(imageIndex - 1 + selected.images.length) % selected.images.length]}
+            alt="Preload previous"
+            width={1}
+            height={1}
+            priority={false}
+            loading="lazy"
+          />
+          <Image
+            src={selected.images[(imageIndex + 1) % selected.images.length]}
+            alt="Preload next"
+            width={1}
+            height={1}
+            priority={false}
+            loading="lazy"
+          />
+        </div>
+
+        {/* Text + Timeline */}
+        <div className="flex flex-col items-center p-6">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={selected.id}
+              className="max-w-3xl text-center"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5 }}
+            >
+              {selected.text}
+            </motion.p>
+          </AnimatePresence>
+
+          <div className="relative flex items-center h-45 w-full overflow-x-auto justify-center gap-8">
+            {timeline.map((node, index) => (
+              <button
+                key={node.id}
+                onClick={() => {
+                  setSelected(node)
+                  setImageIndex(0)
+                }}
+                className="flex flex-col items-center relative"
+              >
+                <span className={`absolute ${index % 2 === 0 ? '-top-8' : 'top-10'} text-sm`}>
+                  {node.label}
+                </span>
+                <motion.div
+                  className={`w-6 h-6 rounded-full ${isSelected(node) ? 'bg-primary' : 'bg-base-300'}`}
+                  animate={{ scale: isSelected(node) ? 1.3 : 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   )
 }
