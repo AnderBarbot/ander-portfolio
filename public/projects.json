@@ -21,7 +21,7 @@
     "subtext": "Worked to identify anomalous images using cifar-10 data set. Consistently achieved 90% accuracy or better. Competed against the class to see who could detect everyone else's poisoned data with the highest accuracy. Advanced into a real world application: using the truthseeker dataset, identified truthfulness of politically charged tweets. utilized NLP - BERT and a finely tuned NN to achieve 95+% accuracy. The project involved data preprocessing, feature extraction, model training, and evaluation.",
     "image": "/proj-NN.png",
     "tech": ["Python", "BERT", "TensorFlow", "PyTorch", "OpenCV", "Pandas"],
-    "concepts": ["**Adversarial Attacks**", "**Anomaly Detection**", "Neural Networks", "NLP - Tokenization"]
+    "concepts": ["**Adversarial Attacks**", "**Anomaly Detection**", "Neural Networks", "NLP - Tokenization", "Data Pre-processing", "Large Datasets"]
   },
   {
     "id": 4,

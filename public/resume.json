@@ -1,52 +1,54 @@
 {
   "CS": {
-    "Objective": "MHR student with technical training seeking to utilize excellent communication skills to improve employee satisfaction, productivity and retention while developing as a Leader and Programmer. Eager for challenges --  diverse insights and experiences allow bridging of cross-team barriers.",
+    "Objective": "Recent graduate seeking to utilize excellent communication and data analysis skills to develop business insights, improve user experiences, and contribute to a positive organizational culture. Eager to bridge cross-team barriers and face diverse challenges through my diverse background.",
     "Education": {
       "Degree": "B.S. Computer Science",
       "Institution": "Boise State University",
       "Graduation": "May 2025",
       "Highlights": [
-        "Data Management: MySQL, stream processing, NoSQL data",
-        "Cyber Security: hardening, vulnerability & penetration testing",
-        "Theory: cloud computing, machine learning, natural language processing",
-        "Current projects: EHR platform (sponsored), buddy memory manager (Rust)"
+        "Backend: Built local and cloud-hosted databases, as well as their API’s",
+        "Frontend: Designed frontend software using numerous frameworks",
+        "UX: Proficient in designing user-friendly experiences",
+        "Data: Pre/post processing and identifying anomalies in large datasets",
+        "Cybersecurity: Secured data, tested vulnerabilities, and investigated breaches",
+        "Testing: Applied testing frameworks and developed automated protocols",
+        "Development Process: Git, Agile, CI/CD pipelines",
+        "Capstone: Led a team to improve legacy EHR software (see portfolio for details)"
       ]
     },
     "Work Experience": [
       {
-        "Role": "Server/Bartender",
-        "Company": "Moscow Alehouse",
-        "Location": "Moscow, Idaho",
-        "Dates": "Feb 2023 - Dec 2023",
-        "Highlights": [
-          "Led a team of 6 servers",
-          "Enhanced social management and professional networking skills"
-        ]
-      },
-      {
-        "Role": "Yacht Deckhand/Steward",
-        "Company": "Various Vessels",
-        "Location": "Palma de Mallorca, Spain",
-        "Dates": "Summer 2022",
-        "Highlights": [
-          "Further developed interpersonal and communication skills in formal settings"
-        ]
-      },
-      {
-        "Role": "Server",
-        "Company": "Judy’s Weiser Inn",
+        "Role": "General Contractor",
+        "Company": "Barbot Construction",
         "Location": "Weiser, Idaho",
-        "Dates": "May 2017 - May 2021",
+        "Dates": "Dec 2023 - May 2025",
         "Highlights": [
-          "Learned to create positive environments and show value through service"
+          "Worked closely with customers to complete projects to their satisfaction"
+        ]
+      },
+      {
+        "Role": "Server/Bartender",
+        "Company": "Various Establishments",
+        "Location": "Idaho & Spain",
+        "Dates": "May 2017 - Dec 2023",
+        "Highlights": [
+          "6+ years across mom ‘n pop, Alehouse, and formal yacht service",
+          "Polished social management skills in diverse environments",
+          "Created positive environments and demonstrated value through service"
         ]
       }
     ],
     "Skills / Certs": {
       "Technical": [
-        "Microsoft Office Specialist: Excel, Word, PowerPoint, PowerBI",
+        "Software Proficiencies: Java, SQL, JS/TypeScript, C",
         "Frameworks: Django, Spring, Flutter",
-        "Languages: C, SQL, JS, Node.js, currently working with Rust"
+        "Microsoft Office Specialist: Excel, Word, PowerPoint, PowerBI"
+      ],
+      "Soft Skills": [
+        "Communication & Interpersonal: Passionate about making others feel seen and appreciated",
+        "Leadership: Business management education + presidencies in 4-H, FFA, BSU Rugby Club",
+        "Data Analysis: Dual major well-suited to transform data into insights (see portfolio)",
+        "Volunteerism: Built FFA & 4-H clubs, mentored a foster youth through Boise Angels NPO"
       ]
     }
   },
@@ -57,22 +59,23 @@
       "Institution": "University of Idaho",
       "Graduation": "Dec 2023",
       "Highlights": [
-        "Customer & employee engagement: experience maps, value alignment, organizational culture",
-        "Productivity: coaching, continuous feedback, transparent collaboration",
-        "Retention: upskilling, social culture, learning & development",
-        "Relevant Courses: Leading Organizations and People, Strategic Management, Integrated Business & Value Creation",
-        "Relevant Projects: Data Analyst for VandalSolutions, a student-led marketing business"
+        "Engagement: Compiled experience maps and user profiles to assess UX in various contexts",
+        "Communication: Active listening, empathy, and transparency",
+        "Organizational Culture: Trust and mutual investment leads to empowerment and productivity",
+        "Business Insight: Transformed raw data into insights & action proposals using Azure & Tableau",
+        "Relevant Courses: Leading Organizations & People, Strategic Management, Integrated Business & Value Creation"
       ]
     },
     "Work Experience": [
       {
-        "Role": "Lead Data Analyst",
+        "Role": "Associate",
         "Company": "VandalSolutions (student-led marketing business)",
         "Location": "Moscow, Idaho",
-        "Dates": "1 year",
+        "Dates": "Dec 2022 - Dec 2023",
         "Highlights": [
-          "Led a team of 40 associates",
-          "Developed visuals, metrics, and business recommendations"
+          "Developed visuals, metrics, and business recommendations",
+          "Gathered, processed, and stored advertising data for 3-5 campaigns per semester",
+          "Worked closely with a team of 4 others, supporting and growing together"
         ]
       }
     ],
@@ -85,41 +88,76 @@
   },
   "Master": {
     "Objective": [
-      "Software Engineer seeking to enhance the value of technical solutions, through leveraging business acumen and extensive interpersonal experience. Passionate about exploring the intersection of tech & business. Excited to learn."
+      "Recent graduate seeking to utilize excellent communication and data analysis skills to develop business insights, improve user experiences, and contribute to organizational culture.",
+      "Software Engineer seeking to enhance the value of technical solutions through leveraging business acumen and interpersonal experience. Passionate about the intersection of tech & business."
     ],
     "Education": [
+      {
+        "Degree": "B.S. Computer Science",
+        "Institution": "Boise State University",
+        "Graduation": "May 2025",
+        "Highlights": [
+          "Backend development, frontend frameworks, and UX design",
+          "Big data preprocessing and anomaly detection",
+          "Cybersecurity testing and breach investigation",
+          "Capstone: Legacy EHR improvement project"
+        ]
+      },
       {
         "Degree": "B.S. Business – Management & Human Resources",
         "Institution": "University of Idaho",
         "Graduation": "Dec 2023",
         "Highlights": [
-          "Customer & employee engagement: experience maps, value alignment, organizational culture",
-          "Productivity: coaching, continuous feedback, transparent collaboration",
-          "Retention: upskilling, social culture, learning & development",
-          "Relevant Courses: Leading Organizations and People, Strategic Management, Integrated Business & Value Creation",
-          "Relevant Projects: Data Analyst for VandalSolutions, a student-led marketing business"
+          "Experience mapping, UX assessment, and employee engagement",
+          "Organizational culture and leadership development",
+          "Business insights from data (Azure, Tableau)",
+          "Relevant courses in management and strategy"
         ]
       }
     ],
     "Work Experience": [
       {
-        "Role": "Lead Data Analyst",
-        "Company": "VandalSolutions (student-led marketing business)",
-        "Location": "Moscow, Idaho",
-        "Dates": "1 year",
+        "Role": "General Contractor",
+        "Company": "Barbot Construction",
+        "Location": "Weiser, Idaho",
+        "Dates": "Dec 2023 - May 2025",
         "Highlights": [
-          "Led a team of 40 associates",
-          "Developed visuals, metrics, and business recommendations"
+          "Delivered construction projects meeting client satisfaction"
+        ]
+      },
+      {
+        "Role": "Associate",
+        "Company": "VandalSolutions",
+        "Location": "Moscow, Idaho",
+        "Dates": "Dec 2022 - Dec 2023",
+        "Highlights": [
+          "Developed visuals, metrics, and business recommendations",
+          "Supported ad campaigns with data analysis"
+        ]
+      },
+      {
+        "Role": "Server/Bartender",
+        "Company": "Various Establishments",
+        "Location": "Idaho & Spain",
+        "Dates": "May 2017 - Dec 2023",
+        "Highlights": [
+          "6+ years customer-facing service experience in diverse environments",
+          "Polished interpersonal and professional communication skills"
         ]
       }
     ],
-    "Skills / Certs": [
-      {
-        "Soft Skills": [
-          "Communication: 2 years extemporaneous public speaking",
-          "Leadership: 4 years 4-H (40 members), 2 years FFA (75 members), 1 year BSU Rugby Club (35 members)"
-        ]
-      }
-    ]
+    "Skills / Certs": {
+      "Technical": [
+        "Java, SQL, JS/TypeScript, C",
+        "Frameworks: Django, Spring, Flutter",
+        "Microsoft Office Specialist: Excel, Word, PowerPoint, PowerBI"
+      ],
+      "Soft Skills": [
+        "Communication & Empathy",
+        "Leadership & Team Management",
+        "Data Analysis & Business Insight",
+        "Volunteerism & Mentorship"
+      ]
+    }
   }
 }
